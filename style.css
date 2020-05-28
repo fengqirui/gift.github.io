@@ -1,0 +1,270 @@
+html,
+body {
+  height: 100%;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+}
+body {
+  background-color: #da6ab7;
+  transition: 2.5s;
+  margin: 0;
+  padding: 0;
+}
+.bg-color-0 {
+  background-color: #dc4b3e;
+}
+.bg-color-1 {
+  background-color: #4e8cf5;
+}
+.bg-color-2 {
+  background-color: #ea4335;
+}
+.bg-color-3 {
+  background-color: #fbbc05;
+}
+.bg-color-4 {
+  background-color: #1da362;
+}
+.bg-color-5 {
+  background-color: #ff9e10;
+}
+.bg-color-6 {
+  background-color: #08a6ed;
+}
+.bg-color-7 {
+  background-color: #7349bd;
+}
+.bg-color-8 {
+  background-color: #9ecd68;
+}
+.bg-color-9 {
+  background-color: #495e68;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.header {
+  height: 200px;
+}
+.lottery-stage {
+  position: relative;
+  height: 300px;
+}
+.lottery-stage .initial-transition-duration {
+  transition-duration: 750ms;
+}
+.lottery-stage .item-wrapper {
+  position: absolute;
+  z-index: 0;
+  opacity: 0;
+  -webkit-transform: translateZ(-100px);
+          transform: translateZ(-100px);
+  transition: opacity ease, -webkit-transform ease;
+  transition: transform ease, opacity ease;
+  transition: transform ease, opacity ease, -webkit-transform ease;
+  transition-duration: 750ms;
+}
+.lottery-stage .item-size {
+  -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+  transition: -webkit-transform ease;
+  transition: transform ease;
+  transition: transform ease, -webkit-transform ease;
+  transition-duration: 750ms;
+}
+.lottery-stage .item-entity {
+  width: 200px;
+  height: 300px;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: box-shadow ease, -webkit-transform ease;
+  transition: transform ease, box-shadow ease;
+  transition: transform ease, box-shadow ease, -webkit-transform ease;
+  transition-duration: 750ms;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+}
+.lottery-stage .item_current {
+  -webkit-transform: translateZ(100px);
+          transform: translateZ(100px);
+}
+.lottery-stage .item_current .item-size {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.lottery-stage .item_current .item-position {
+  -webkit-transform: translateZ(100px);
+          transform: translateZ(100px);
+}
+.lottery-stage .item_current .item-entity {
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+}
+.lottery-stage .item_pre,
+.lottery-stage .item_next {
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+.lottery-stage .item_pre .item-entity,
+.lottery-stage .item_next .item-entity {
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+}
+.lottery-stage .item_pre .item-size {
+  -webkit-transform: scale(0.85);
+          transform: scale(0.85);
+}
+.lottery-stage .item_pre .item-position {
+  -webkit-transform: translateX(100px);
+          transform: translateX(100px);
+}
+.lottery-stage .item_next .item-size {
+  -webkit-transform: scale(0.85);
+          transform: scale(0.85);
+}
+.lottery-stage .item_next .item-position {
+  -webkit-transform: translateX(-100px);
+          transform: translateX(-100px);
+}
+.lottery-stage .item_current,
+.lottery-stage .item_pre,
+.lottery-stage .item_next {
+  opacity: 1;
+}
+.lottery-stage .item-entity .pic-wrapper {
+  position: relative;
+  top: -50px;
+  width: 70%;
+  margin: 0 auto;
+}
+.lottery-stage .item-entity .pic-wrapper img {
+  width: 100%;
+}
+.lottery-stage .item-entity .title {
+  margin-top: 3em;
+  font-size: 16px;
+  font-weight: bold;
+  color: #de4f4f;
+}
+.lottery-stage .item-entity .description {
+  margin-top: 2em;
+  font-size: 14px;
+  color: #666;
+}
+.lottery-stage .item_lottery {
+  position: fixed;
+  z-index: 100;
+}
+.lottery-stage_cards {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.lottery-stage_cards_plain {
+  -webkit-transform-style: unset;
+          transform-style: unset;
+}
+.lottery-stage__mask {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-animation: fadeIn 300ms both;
+          animation: fadeIn 300ms both;
+}
+.lottery-stage__mask.hidden {
+  z-index: -1;
+  opacity: 0;
+  -webkit-animation: fadeOut 0ms both;
+          animation: fadeOut 0ms both;
+}
+.lottery-stage_close-button {
+  position: absolute;
+  z-index: 60;
+  left: 50%;
+  top: 340px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #da6ab7;
+  color: #fff;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  text-align: center;
+  line-height: 45px;
+  cursor: pointer;
+}
+.lottery-stage_close-button.hidden {
+  display: none;
+}
+.lottery-stage_close-button img {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  vertical-align: middle;
+}
+.lottery-stage_close-button span {
+  vertical-align: middle;
+}
+.action-area {
+  margin-top: 30px;
+  text-align: center;
+}
+.action-area button {
+  display: inline-block;
+  border: none;
+  border-radius: 3px;
+  padding: 12px 0;
+  width: 110px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ea4335;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  cursor: pointer;
+}
+.action-area button.active {
+  color: #fff;
+  background-color: #ea4335;
+}
+.action-area button:focus {
+  outline: none;
+}

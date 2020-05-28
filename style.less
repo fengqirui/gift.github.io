@@ -1,0 +1,246 @@
+html,
+body {
+  height: 100%;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', Arial, sans-serif;
+}
+
+body {
+  background-color: #da6ab7;
+  transition: 2.5s;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-color-0 {
+  background-color: #dc4b3e;
+}
+.bg-color-1 {
+  background-color: #4e8cf5;
+}
+.bg-color-2 {
+  background-color: #ea4335;
+}
+.bg-color-3 {
+  background-color: #fbbc05;
+}
+.bg-color-4 {
+  background-color: #1da362;
+}
+.bg-color-5 {
+  background-color: #ff9e10;
+}
+.bg-color-6 {
+  background-color: #08a6ed;
+}
+.bg-color-7 {
+  background-color: #7349bd;
+}
+.bg-color-8 {
+  background-color: #9ecd68;
+}
+.bg-color-9 {
+  background-color: #495e68;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.header {
+  height: 200px;
+}
+
+.lottery-stage {
+  position: relative;
+  height: 300px;
+  .initial-transition-duration {
+    transition-duration: 750ms;
+  }
+  .item-wrapper {
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
+    // transform -> translateZ + opacity
+    transform: translateZ(-100px);
+    transition: transform ease, opacity ease;
+    .initial-transition-duration();
+  }
+  .item-size {
+    // transform -> scale
+    transform: scale(0.6);
+    transition: transform ease;
+    .initial-transition-duration();
+  }
+  .item-entity {
+    width: 200px;
+    height: 300px;
+    border-radius: 6px;
+    background-color: #fff;
+    // transform -> translateX + others
+    transition: transform ease, box-shadow ease;
+    .initial-transition-duration();
+
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+  }
+  .item_current {
+    transform: translateZ(100px);
+    .item-size {
+      transform: scale(1);
+    }
+    .item-position {
+      transform: translateZ(100px);
+    }
+    .item-entity {
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+    }
+  }
+  .item_pre,
+  .item_next {
+    transform: translateZ(0);
+    .item-entity {
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+    }
+  }
+  .item_pre {
+    .item-size {
+      transform: scale(0.85);
+    }
+    .item-position {
+      transform: translateX(100px);
+    }
+  }
+  .item_next {
+    .item-size {
+      transform: scale(0.85);
+    }
+    .item-position {
+      transform: translateX(-100px);
+    }
+  }
+  .item_current,
+  .item_pre,
+  .item_next {
+    opacity: 1;
+  }
+
+  .item-entity {
+    .pic-wrapper {
+      position: relative;
+      top: -50px;
+      width: 70%;
+      margin: 0 auto;
+      img {
+        width: 100%;
+      }
+    }
+    .title {
+      margin-top: 3em;
+      font-size: 16px;
+      font-weight: bold;
+      color: #de4f4f;
+    }
+    .description {
+      margin-top: 2em;
+      font-size: 14px;
+      color: #666;
+    }
+  }
+  .item_lottery {
+    position: fixed;
+    z-index: 100;
+  }
+}
+.lottery-stage_cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+.lottery-stage_cards_plain {
+  transform-style: unset;
+}
+.lottery-stage__mask {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  animation: fadeIn 300ms both;
+  &.hidden {
+    z-index: -1;
+    opacity: 0;
+    animation: fadeOut 0ms both;
+  }
+}
+.lottery-stage_close-button {
+  @width: 45px;
+  position: absolute;
+  z-index: 60;
+  left: 50%;
+  top: 340px;
+  width: @width;
+  height: @width;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background-color: #da6ab7;
+  color: #fff;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  text-align: center;
+  line-height: @width;
+  cursor: pointer;
+  &.hidden {
+    display: none;
+  }
+  img {
+    transform: rotate(45deg);
+    vertical-align: middle;
+  }
+  span {
+    vertical-align: middle;
+  }
+}
+
+.action-area {
+  margin-top: 30px;
+  text-align: center;
+  button {
+    display: inline-block;
+    border: none;
+    border-radius: 3px;
+    padding: 12px 0;
+    width: 110px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ea4335;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    cursor: pointer;
+    &.active {
+      color: #fff;
+      background-color: #ea4335;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
